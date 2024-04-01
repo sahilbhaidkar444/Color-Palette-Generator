@@ -40,9 +40,6 @@ document.getElementById('upload').addEventListener('change', function(event) {
                 colorBox.title = color; // Set title as hexadecimal color code
                 colorPalette.appendChild(colorBox);
             });
-
-            // Export color palette to text file
-            exportColorPalette(sortedColors);
         };
         img.src = e.target.result;
         document.getElementById('image-preview').src = e.target.result; // Display uploaded image
@@ -73,3 +70,8 @@ function exportColorPalette(colors) {
     // Clean up by revoking the URL object
     URL.revokeObjectURL(url);
 }
+
+document.getElementById('download-btn').addEventListener('click', function() {
+    // Trigger the export function to download the color palette text file
+    exportColorPalette(sortedColors);
+});
