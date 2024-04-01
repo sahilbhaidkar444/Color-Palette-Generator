@@ -4,12 +4,12 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5c25a;
-    color: black;
+    background-color: #f0f5f9; /* Frosty white background */
+    color: #333; /* Dark text color for better contrast */
 }
 
 header {
-    color: black;
+    color: #333; /* Dark text color for better contrast */
     padding: 30px;
 }
 
@@ -24,8 +24,8 @@ h2 {
 
 #upload-btn {
     padding: 20px;
-    background-color: black;
-    color: #f5c25a;
+    background-color: #333; /* Dark color for contrast */
+    color: #f0f5f9; /* Frosty white text */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -35,7 +35,7 @@ h2 {
 }
 
 #upload-btn:hover {
-    background-color: #333;
+    background-color: #555; /* Darker color on hover */
 }
 
 #image-area {
@@ -44,7 +44,7 @@ h2 {
     width: 250px;
     height: 250px;
     overflow: hidden;
-    border: 2px solid black;
+    border: 2px solid #333; /* Dark border */
 }
 
 #image-preview {
