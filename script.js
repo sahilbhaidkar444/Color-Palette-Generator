@@ -7,33 +7,45 @@ document.getElementById('upload').addEventListener('change', function(event) {
     const reader = new FileReader();
 
     reader.onload = function(e) {
-        const img = document.getElementById('image-preview');
-        img.src = e.target.result;
-        img.style.display = 'block'; // Show the image
-        document.getElementById('select-image-msg').style.display = 'none'; // Hide the placeholder message
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            
+            // Get image data from canvas
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
 
-        // Extract colors from the image using Vibrant.js
-        Vibrant.from(img.src).getPalette((err, palette) => {
-            if (err) {
-                console.error(err);
-                return;
+            // Extract colors from image data
+            const colorCounts = {};
+            for (let i = 0; i < pixels.length; i += 4) {
+                const rgb = pixels.slice(i, i + 3);
+                const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+                colorCounts[hex] = (colorCounts[hex] || 0) + 1;
             }
 
+            // Sort colors by count
+            const sortedColors = Object.keys(colorCounts).sort((a, b) => colorCounts[b] - colorCounts[a]);
+
+            // Display top colors
             const colorPalette = document.getElementById('color-palette');
-            colorPalette.innerHTML = ''; // Clear previous colors
-
-            // Create color swatches for each color in the palette
-            for (const swatch in palette) {
-                if (palette.hasOwnProperty(swatch) && palette[swatch]) {
-                    const color = palette[swatch].getHex();
-                    const colorBox = document.createElement('div');
-                    colorBox.style.backgroundColor = color;
-                    colorBox.className = 'color-box';
-                    colorPalette.appendChild(colorBox);
-                }
-            }
-        });
+            colorPalette.innerHTML = '';
+            sortedColors.slice(0, 5).forEach(color => {
+                const colorBox = document.createElement('div');
+                colorBox.style.backgroundColor = color;
+                colorBox.className = 'color-box';
+                colorPalette.appendChild(colorBox);
+            });
+        };
+        img.src = e.target.result;
     };
 
     reader.readAsDataURL(file);
 });
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
