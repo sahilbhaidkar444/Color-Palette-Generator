@@ -37,10 +37,14 @@ document.getElementById('upload').addEventListener('change', function(event) {
                 const colorBox = document.createElement('div');
                 colorBox.style.backgroundColor = color;
                 colorBox.className = 'color-box';
+                colorBox.title = color; // Set title as hexadecimal color code
                 colorPalette.appendChild(colorBox);
             });
         };
         img.src = e.target.result;
+        document.getElementById('image-preview').src = e.target.result; // Display uploaded image
+        document.getElementById('select-image-msg').style.display = 'none'; // Hide select image message
+        document.getElementById('image-area').style.display = 'block'; // Show image area
     };
 
     reader.readAsDataURL(file);
