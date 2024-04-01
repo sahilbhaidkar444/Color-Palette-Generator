@@ -1,12 +1,12 @@
 # Color Palette Generator
 
 ## Description
-This is a simple web application that allows users to generate color palettes from uploaded images. The application extracts colors from the uploaded image and displays them as color swatches.
+This is a simple web application that allows users to generate color palettes from uploaded images. The application extracts colors from the uploaded image using HTML5 Canvas API and displays the generated color palette as color swatches below the image.
 
 ## Features
 - Upload images to generate color palettes.
-- Automatically extracts colors from the uploaded image using Vibrant.js.
-- Displays the generated color palette as color swatches.
+- Extract colors from the uploaded image using HTML5 Canvas API.
+- Display the generated color palette as color swatches below the image.
 
 ## How to Use
 1. Clone or download this repository to your local machine.
@@ -18,10 +18,7 @@ This is a simple web application that allows users to generate color palettes fr
 - HTML
 - CSS
 - JavaScript
-- Vibrant.js
-
-## Credits
-- Vibrant.js: https://jariz.github.io/vibrant.js/
+- HTML5 Canvas API
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
