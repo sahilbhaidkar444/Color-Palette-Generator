@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Color Palette Generator</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Generator</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
@@ -14,13 +16,16 @@
     <input type="file" id="upload" accept="image/*" style="display: none;">
 </div>
 
-<div id="image-area" style="display: none;">
+<div id="image-area">
     <img id="image-preview" src="#" alt="Image Preview">
-    <p id="select-image-msg">Select Image</p>
+    <p id="select-image-msg">Select Image</p> <!-- Placeholder message -->
 </div>
 
 <div id="color-palette">
+    
 </div>
+
+<button id="download-btn">Get Color Palette</button>
 
 <script src="script.js"></script>
 </body>
