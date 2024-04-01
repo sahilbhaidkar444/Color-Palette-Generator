@@ -40,6 +40,9 @@ document.getElementById('upload').addEventListener('change', function(event) {
                 colorBox.title = color; // Set title as hexadecimal color code
                 colorPalette.appendChild(colorBox);
             });
+
+            // Export color palette to text file
+            exportColorPalette(sortedColors);
         };
         img.src = e.target.result;
         document.getElementById('image-preview').src = e.target.result; // Display uploaded image
@@ -52,4 +55,21 @@ document.getElementById('upload').addEventListener('change', function(event) {
 
 function rgbToHex(r, g, b) {
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function exportColorPalette(colors) {
+    const timestamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\..+/, ''); // Generate a timestamp without special characters
+    const filename = 'ColorPalette_' + timestamp + '.txt'; // Generate the filename with timestamp
+    const content = colors.join('\n'); // Convert colors array to a string with each color on a new line
+    const blob = new Blob([content], { type: 'text/plain' }); // Create a Blob containing the content
+    const url = URL.createObjectURL(blob); // Create a URL for the Blob
+
+    // Create a link element to prompt user to download the text file
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename; // Set the filename for the text file
+    a.click();
+
+    // Clean up by revoking the URL object
+    URL.revokeObjectURL(url);
 }
