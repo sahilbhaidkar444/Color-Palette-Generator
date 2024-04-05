@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Generator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Color Palette Generator</h1>
+    </header>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="file">Select an image:</label><br>
+        <input type="file" id="file" name="file" accept="image/*"><br><br>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+{% if image %}
+<div id="image-area">
+    <h3>Uploaded Image:</h3>
+    <img src="data:image/jpeg;base64,{{ image }}" alt="Uploaded Image">
+</div>
+{% endif %}
+
+<div id="color-palette">
+    {% if colors %}
+    <h3>Color Palette:</h3>
+    <div class="color-boxes">
+        {% for color in colors %}
+        <div class="color-box" style="background-color: {{ color }};"></div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
