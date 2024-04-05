@@ -29,6 +29,11 @@ form {
     margin-top: 20px;
 }
 
+#image-preview {
+    max-width: 300px;
+    max-height: 300px;
+}
+
 .color-box {
     display: inline-block;
     width: 50px;
