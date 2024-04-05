@@ -17,7 +17,6 @@ This is a simple web application that allows users to generate color palettes fr
 ## Technologies Used
 - HTML
 - CSS
-- JavaScript
 - HTML5 Canvas API
 
 ## License
