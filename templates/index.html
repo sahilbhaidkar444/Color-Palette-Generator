@@ -11,30 +11,31 @@
     <header>
         <h1>Color Palette Generator</h1>
     </header>
-    <form action="/" method="post" enctype="multipart/form-data">
-        <label for="file">Select an image:</label><br>
-        <input type="file" id="file" name="file" accept="image/*"><br><br>
-        <button type="submit">Upload</button>
+    <form action="/" method="post" enctype="multipart/form-data" id="upload-form">
+        <label for="file" class="custom-file-upload">
+            <span>Choose File</span>
+        </label>
+        <input type="file" id="file" name="file" accept="image/*">
+        <button type="submit" id="upload-btn">Upload</button>
     </form>
-</div>
 
-{% if image %}
-<div id="image-area">
-    <h3>Uploaded Image:</h3>
-    <img src="data:image/jpeg;base64,{{ image }}" alt="Uploaded Image">
-</div>
-{% endif %}
-
-<div id="color-palette">
-    {% if colors %}
-    <h3>Color Palette:</h3>
-    <div class="color-boxes">
-        {% for color in colors %}
-        <div class="color-box" style="background-color: {{ color }};"></div>
-        {% endfor %}
+    {% if image %}
+    <div id="image-area">
+        <h3>Uploaded Image:</h3>
+        <img src="data:image/jpeg;base64,{{ image }}" alt="Uploaded Image" width="200" height="200">
     </div>
     {% endif %}
-</div>
 
+    <div id="color-palette">
+        {% if colors %}
+        <h3>Color Palette:</h3>
+        <div class="color-boxes">
+            {% for color in colors %}
+            <div class="color-box" style="background-color: {{ color };""}></div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
 </body>
 </html>
