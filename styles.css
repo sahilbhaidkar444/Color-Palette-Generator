@@ -9,9 +9,9 @@ body {
 }
 
 header {
-    color: #333;
+    color: white; /* White text color for header */
     padding: 30px;
-    background-color: white; 
+    background-color: #333; /* Dark background color for header */
 }
 
 h2 {
@@ -27,7 +27,7 @@ h2 {
 #download-btn {
     padding: 20px;
     background-color: black; /* Black button background */
-    color: #fff; /* Black button text color */
+    color: #f5c25a; /* Black button text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -65,7 +65,7 @@ h2 {
     margin-top: 20px;
     margin-left: 10px;
     text-align: center;
-    background-color: f0f0f0; /* Frosty white background */
+    background-color: white; /* Frosty white background */
     padding: 20px; /* Add padding for better visual appearance */
 }
 
@@ -76,4 +76,21 @@ h2 {
     margin: 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#download-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: black;
+    color: #f5c25a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+#download-btn:hover {
+    background-color: #333;
 }
